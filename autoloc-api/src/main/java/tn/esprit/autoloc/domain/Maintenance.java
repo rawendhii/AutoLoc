@@ -2,10 +2,8 @@
 package tn.esprit.autoloc.domain;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
@@ -19,11 +17,15 @@ public class Maintenance {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idMaintenance;
+     Long idMaintenance;
 
-    private LocalDate dateDebut;
+     LocalDate dateDebut;
 
-    private LocalDate dateFin;
+     LocalDate dateFin;
 
-    private String description;
+     String description;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Vehicule vehicule;
+
 }

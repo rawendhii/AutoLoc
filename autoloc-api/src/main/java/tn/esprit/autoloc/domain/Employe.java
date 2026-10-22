@@ -2,10 +2,7 @@
 package tn.esprit.autoloc.domain;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Entity
 @Table(name = "employe")
@@ -17,12 +14,16 @@ public class Employe {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idEmploye;
+    Long idEmploye;
 
-    private String nom;
+    String nom;
 
-    private String prenom;
+    String prenom;
 
     @Enumerated(EnumType.STRING)
-    private RoleEmploye role;
+    RoleEmploye role;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Agence agence;
+
 }

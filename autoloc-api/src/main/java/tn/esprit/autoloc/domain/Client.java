@@ -2,10 +2,9 @@
 package tn.esprit.autoloc.domain;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import java.util.List;
+import java.util.ArrayList;
 
 import java.time.LocalDate;
 
@@ -19,17 +18,25 @@ public class Client {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idClient;
+    Long idClient;
 
-    private String nom;
+    String nom;
 
-    private String prenom;
+    String prenom;
 
-    private String email;
+     String email;
 
-    private String telephone;
+     String telephone;
 
-    private String numPermis;
+     String numPermis;
 
-    private LocalDate dateInscription;
+     LocalDate dateInscription;
+
+    @OneToMany(
+            mappedBy = "client",
+            cascade = CascadeType.PERSIST,
+            fetch = FetchType.LAZY
+    )
+    private List<Reservation> reservations = new ArrayList<>();
+
 }
