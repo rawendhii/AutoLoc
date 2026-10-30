@@ -3,7 +3,6 @@ package tn.esprit.autoloc.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
-import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
